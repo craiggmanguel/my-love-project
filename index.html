@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Love 💖</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-blur" id="bgBlur"></div>
+
+    <header>
+        <h1>To My Love 💕 <span id="loveName"></span> </h1>
+        <p>Every day is better because of you</p>
+    </header>
+
+    <section class="message">
+        <h2>From My Heart</h2>
+        <p id="typewriter"></p>
+
+        <div class="countdown">
+            <div class="time-box"><span id="y">0</span><small>Years</small></div>
+            <div class="time-box"><span id="mo">0</span><small>Months</small></div>
+            <div class="time-box"><span id="d">0</span><small>Days</small></div>
+            <div class="time-box"><span id="h">0</span><small>Hours</small></div>
+            <div class="time-box"><span id="m">0</span><small>Minutes</small></div>
+            <div class="time-box"><span id="s">0</span><small>Seconds</small></div>
+        </div>
+    </section>
+
+    <section class="slider-section">
+        <h2>Our Memories 📸</h2>
+
+        <div class="slider" id="slider">
+            <button class="nav prev">❮</button>
+            <div class="slides">
+                <img src="photo1.jpeg" class="slide active">
+                <img src="photo2.jpeg" class="slide">
+                <img src="photo3.jpeg" class="slide">
+                <img src="photo4.jpeg" class="slide">
+                <img src="photo5.jpeg" class="slide">
+                <img src="photo6.jpeg" class="slide">
+                <img src="photo7.jpeg" class="slide">
+                <img src="photo8.jpeg" class="slide">
+                <img src="photo9.jpeg" class="slide">
+                <img src="photo10.jpeg" class="slide">
+                <img src="photo11.jpeg" class="slide">
+                <img src="photo12.jpeg" class="slide">
+            </div>
+            <button class="nav next">❯</button>
+        </div>
+    </section>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- MUSIC CONTROLS -->
+    <div class="music-controls">
+        <button id="playPauseBtn">⏸ Pause</button>
+
+        <div class="volume-control">
+            🔊
+            <input type="range" id="volumeSlider" min="0" max="100">
+        </div>
+    </div>
+
+    <footer>Made with endless love 💖</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
