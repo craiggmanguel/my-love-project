@@ -67,35 +67,45 @@ document.querySelector(".prev").onclick = () => showSlide(current = (current - 1
 
 setInterval(() => showSlide(current = (current + 1) % slides.length), 4000);
 
-/* MUSIC AUTOPLAY + MEMORY */
+/* 🎵 MUSIC (mobile-safe touch start + memory) */
 const music = document.getElementById("bgMusic");
 const playBtn = document.getElementById("playPauseBtn");
 const volumeSlider = document.getElementById("volumeSlider");
 
 // load saved volume
 let savedVol = localStorage.getItem("loveVolume");
-savedVol = savedVol ? savedVol : 0.7;
+savedVol = savedVol ? Number(savedVol) : 0.7;
 
 music.volume = 0;
 volumeSlider.value = savedVol * 100;
 
-function startMusic() {
-    music.play().catch(() => { });
-    let v = 0;
-    const fade = setInterval(() => {
-        if (v < savedVol) {
-            v += 0.01;
-            music.volume = v;
-        } else clearInterval(fade);
-    }, 200);
-    document.removeEventListener("click", startMusic);
-    document.removeEventListener("touchstart", startMusic);
-}
-startMusic();
-document.addEventListener("click", startMusic);
-document.addEventListener("touchstart", startMusic);
+let musicStarted = false;
 
-// play / pause
+function startMusicOnce() {
+    if (musicStarted) return;
+
+    music.play().then(() => {
+        let v = 0;
+        const fade = setInterval(() => {
+            if (v < savedVol) {
+                v += 0.02;
+                music.volume = v;
+            } else {
+                music.volume = savedVol;
+                clearInterval(fade);
+            }
+        }, 100);
+
+        musicStarted = true;
+        playBtn.textContent = "⏸ Pause";
+    }).catch(() => { });
+}
+
+// REQUIRED for mobile browsers
+document.addEventListener("click", startMusicOnce, { once: true });
+document.addEventListener("touchstart", startMusicOnce, { once: true });
+
+// play / pause button
 playBtn.onclick = () => {
     if (music.paused) {
         music.play();
